@@ -16,6 +16,6 @@
 
 
 ## Автор проекта
-Сидоров Алексей \n
-Telegram @pascal161 \n
+Сидоров Алексей   
+Telegram @pascal161   
 aleksid92@gmail.com

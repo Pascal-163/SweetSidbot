@@ -6,6 +6,11 @@ from telegram.ext import ApplicationBuilder, ContextTypes, CommandHandler
 from dotenv import load_dotenv
 import message_texts
 
+# import telebot
+# import sqlite3
+
+
+# bot = telebot.TeleBot('6113793338:AAHcxo-4cGldzKqTgFpqDT2sWoJcEXVrqVc')
 
 load_dotenv()
 
@@ -51,6 +56,32 @@ async def tort(update: Update, context: ContextTypes.DEFAULT_TYPE):
             chat_id=effective_chat.id,
             text=message_texts.TORT
     )
+
+   
+# @bot.callback_query_handler(func=lambda id: True)
+# def get_all_recipes(id):
+#     try:
+#         conn = sqlite3.connect('recipes1.db')
+#         cursor = conn.cursor()
+#         print("Подключен к SQLite")
+
+#         sql_select_query = """SELECT * FROM tort"""
+#         cursor.execute(sql_select_query)
+#         records = cursor.fetchall()
+#         print("Вывод всех рецептов")
+
+#         info = ''
+#         for row in records:
+#             info += f"ID: {row[0]}\nНазвание: {row[1]}\nРецепт: {row[2]}\nКоманда: {row[3]}\n\n"
+
+#     except sqlite3.Error as error:
+#         print("Ошибка при работе с SQLite", error)
+#     finally:
+#         if conn:
+#             conn.close()
+#             print("Соединение с SQLite закрыто")
+
+#     bot.send_message(id.message.chat.id, info)
 
 
 if __name__ == '__main__':
