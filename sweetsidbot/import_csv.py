@@ -1,17 +1,13 @@
 import csv
 import sqlite3
 
-# Подключение к базе данных
-conn = sqlite3.connect('recipes.db')  # Замените на вашу базу данных
+conn = sqlite3.connect('recipes.db')
 cursor = conn.cursor()
 
-# Замените 'your_table' на имя вашей таблицы в базе данных
 table_name = 'tort'
 
-# Замените 'your_data.csv' на имя вашего CSV файла
 csv_file = 'recipes.csv'
 
-# Создание таблицы, если её нет
 cursor.execute(f'''
     CREATE TABLE IF NOT EXISTS {table_name} (
         Название TEXT,
@@ -20,17 +16,15 @@ cursor.execute(f'''
     );
 ''')
 
-# Чтение данных из CSV файла и их запись в базу данных
 with open(csv_file, 'r', encoding='utf-8') as file:
     csv_reader = csv.reader(file)
-    next(csv_reader)  # Пропустить заголовок, если он есть
+    next(csv_reader)
     for row in csv_reader:
         cursor.execute(f'''
             INSERT INTO {table_name} (Название, Рецепт, Команда)
             VALUES (?, ?, ?);
-        ''', (row[0], row[1], row[2]))  # Используйте int(), чтобы преобразовать в целое число
+        ''', (row[0], row[1], row[2]))
 
-# Сохранение изменений и закрытие соединения
 conn.commit()
 conn.close()
 

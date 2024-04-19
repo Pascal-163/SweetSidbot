@@ -9,3 +9,6 @@ db.sqlite3-journal
 venv/
 
 recipes.db
+
+bot.py
+message_texts.py
