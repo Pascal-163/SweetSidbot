@@ -1,36 +1,23 @@
 from aiogram.types import Message
-from aiogram.dispatcher.filters import Command
-
 from main import dp
 from sql import recipes
 
 
-@dp.message_handler(Command('persik'))
+@dp.message_handler(commands=('krasnujbarchat', 'persik', 'rafaello',
+                              'tiramisu', 'serdce'))
 async def get_recipes(message: Message):
 
-    print('Получаем значение команды')
-    item = message.text.split(maxsplit=1)
-    print(item)
+    item = message.text.split()
 
     if not item:
-        await message.answer("Пожалуйста, укажите название рецепта.")
+        await message.answer("Сообщение не содержит команды.")
         return
 
-    # Получаем информацию о рецепте из базы данных по указанному названию
-    recipe_info = await recipes(item)
+    recipe_name = item[0]
+    recipe_info = await recipes(recipe_name)
 
-    print(recipe_info)
-
-    if not recipe_info:
-        await message.answer("Рецепт не найден.")
-        return
-
-    if len(recipe_info) < 2:
-        await message.answer("Информация о рецепте неполная.")
-        return
-
-    recipe_name = recipe_info[0]
-    recipe_ingredients = recipe_info[1]
-
-    # Отправляем информацию о рецепте пользователю
-    await message.answer(f"Рецепт: {recipe_name}\nИнгредиенты: {recipe_ingredients}")
+    if recipe_info is None:
+        await message.answer("Рецепт не найден. Проверьте правильность"
+                             "написания.")
+    else:
+        await message.answer(f"Рецепт: {recipe_info}")

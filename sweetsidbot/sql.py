@@ -5,9 +5,7 @@ async def recipes(item):
     conn = sqlite3.connect('recipes.db')
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM tort WHERE Команда = ?", (str(item[1]),))
-    print('Печать из sql')
-    print(item)
+    cursor.execute("SELECT Рецепт FROM tort WHERE Команда = ?", (str(item),))
     recipes_info = cursor.fetchall()
     conn.close()
 
