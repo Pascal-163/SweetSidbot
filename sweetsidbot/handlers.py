@@ -3,8 +3,7 @@ from main import dp
 from sql import recipes
 
 
-@dp.message_handler(commands=('krasnujbarchat', 'persik', 'rafaello',
-                              'tiramisu', 'serdce'))
+@dp.message_handler(commands=None)
 async def get_recipes(message: Message):
 
     item = message.text.split()
