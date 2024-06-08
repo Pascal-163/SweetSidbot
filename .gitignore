@@ -7,8 +7,7 @@ db.sqlite3-journal
 # Environments
 .env
 venv/
+media/
 
 recipes.db
-
-bot.py
-message_texts.py
+recipes2.db
