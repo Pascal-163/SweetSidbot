@@ -1,6 +1,21 @@
 from aiogram.types import Message
 from main import dp
 from sql import recipes
+# import logging
+# from telegram import Update
+# from telegram.ext import ContextTypes
+# import message_texts
+
+
+# async def tort(update: Update, context: ContextTypes.DEFAULT_TYPE):
+#     effective_chat = update.effective_chat
+#     # if not effective_chat:
+#     #     logger.warning("effective_chat is None in /tort")
+#     #     return
+#     await context.bot.send_message(
+#             chat_id=effective_chat.id,
+#             text=message_texts.TORT
+#     )
 
 
 @dp.message_handler(commands=('krasnujbarchat', 'persik', 'rafaello',
